@@ -1,5 +1,7 @@
 package com.learn;
 
+import java.util.Scanner;
+
 public class SavingAccount extends Account{
     final double MinBalance;
     final double InterestRate;

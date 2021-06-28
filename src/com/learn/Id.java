@@ -4,13 +4,15 @@ public class Id {
     private String NationalId;
     private String pass;
     private String name;
-    private int cell;
+    private String cell;
+    private static int count = 0;
 
-    public Id(String nationalId, String pass, String name, int cell) {
+    public Id(String nationalId, String pass, String name, String cell) {
         NationalId = nationalId;
         this.pass = pass;
         this.name = name;
         this.cell = cell;
+        count++;
     }
 
     public String getNationalId() {
@@ -25,7 +27,7 @@ public class Id {
         return name;
     }
 
-    public int getCell() {
+    public String getCell() {
         return cell;
     }
     public boolean CheckPass(String pass){return true;}
@@ -40,5 +42,11 @@ public class Id {
         else
             System.out.println("please enter a valid ID");
             return false;
+    }
+
+    @Override
+    public String toString() {
+        String c = ":";
+        return count + c + NationalId +':' + pass + ':' + name + ":" + cell ;
     }
 }
