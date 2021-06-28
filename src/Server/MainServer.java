@@ -31,7 +31,12 @@ class SingleServer extends Thread{
                     System.out.println(inputStream.nextLine());
                     out.println("done");
                 }
-
+                if(true){
+                    SignUp(str);//if the action is signing up
+                }
+                else{
+                    CheckLogin(str,file);
+                }
             }
             System.out.println("closing...");
         } catch(IOException e) {
@@ -43,6 +48,24 @@ class SingleServer extends Thread{
                 System.err.println("Socket not closed");
             }
         }
+    }
+
+    private void CheckLogin(String str, File file) {
+    }
+
+    private void SignUp(String str) throws FileNotFoundException {
+        int count=0,start=0;
+        String[] PI = new String[5];
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)==':'){
+                PI[count]=str.substring(start,i);
+                count++;
+                start=i+1;
+            }
+        }
+        System.out.println(PI[1]);
+        File file = new File("PersonalData.txt");
+        PrintStream outputStream = new PrintStream(new FileOutputStream(file));
     }
 }
 public class MainServer {
